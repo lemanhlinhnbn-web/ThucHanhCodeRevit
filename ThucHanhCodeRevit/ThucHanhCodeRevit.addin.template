@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+
+  <AddIn Type="Command">
+    <Name>Chon canh</Name>
+    <Text>Chọn cạnh [__BRANCH__]</Text>
+    <Description>Nhánh: __BRANCH__</Description>
+    <Assembly>ThucHanhCodeRevit.dll</Assembly>
+    <AddInId>GUID-1</AddInId>
+    <FullClassName>ThucHanhCodeRevit._2011_1</FullClassName>
+    <VendorId>LTBIM</VendorId>
+    <VendorDescription>LTBIM</VendorDescription>
+  </AddIn>
+
+  <!-- thêm các lệnh khác cùng kiểu: giữ nguyên GUID cố định cho từng lệnh -->
+
+</RevitAddIns>
