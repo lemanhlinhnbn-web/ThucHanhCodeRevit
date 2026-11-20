@@ -1,95 +1,34 @@
-﻿
-using System;
-using System.IO;
-using System.Linq;
+﻿using System;
 using System.Reflection;
 using Autodesk.Revit.UI;
-using Autodesk.Revit.DB;
 
 namespace ThucHanhCodeRevit
 {
     public class App : IExternalApplication
     {
-        private const string TabName = "THUC HANH REVIT API";
-        private const string PanelName = "Bai Thuc Hanh";
-
-        public Result OnStartup(UIControlledApplication application)
+        public Result OnStartup(UIControlledApplication app)
         {
             try
             {
-                // Tao Ribbon Tab
-                try
-                {
-                    application.CreateRibbonTab(TabName);
-                }
-                catch (Autodesk.Revit.Exceptions.ArgumentException)
-                {
-                    // Tab da ton tai
-                }
+                string dll = Assembly.GetExecutingAssembly().Location;
 
-                // Tao Ribbon Panel
-                var panels = application.GetRibbonPanels(TabName);
+                try { app.CreateRibbonTab("LTBIM"); } catch { }
+                RibbonPanel panel = app.CreateRibbonPanel("LTBIM", "Thực hành");
 
-                RibbonPanel panel = panels.FirstOrDefault(
-                    p => p.Name == PanelName);
-
-                if (panel == null)
-                {
-                    panel = application.CreateRibbonPanel(
-                        TabName, PanelName);
-                }
-
-                // Lay assembly hien tai
-                Assembly assembly = Assembly.GetExecutingAssembly();
-
-                string assemblyPath = assembly.Location;
-
-                // Tu dong tim tat ca ExternalCommand
-                var commandTypes = assembly.GetTypes()
-                    .Where(t =>
-                        t.IsClass &&
-                        !t.IsAbstract &&
-                        typeof(IExternalCommand).IsAssignableFrom(t))
-                    .OrderBy(t => t.Name)
-                    .ToList();
-
-                // Tao nut lenh cho tung class
-                foreach (Type commandType in commandTypes)
-                {
-                    string className = commandType.FullName;
-
-                    string buttonName = className
-                        .Replace(".", "_")
-                        .Replace("+", "_");
-
-                    PushButtonData buttonData =
-                        new PushButtonData(
-                            buttonName,
-                            commandType.Name,
-                            assemblyPath,
-                            className
-                        );
-
-                    buttonData.ToolTip =
-                        "Chay bai thuc hanh: " + commandType.Name;
-
-                    // Them nut vao Ribbon
-                    panel.AddItem(buttonData);
-                }
-
-                return Result.Succeeded;
+                var btn = new PushButtonData(
+                    "btn2011_1", "Chọn\ncạnh", dll, "ThucHanhCodeRevit._2011_1");
+                btn.ToolTip = "Chọn nhiều cạnh và đếm số lượng";
+                panel.AddItem(btn);
             }
             catch (Exception ex)
             {
-                TaskDialog.Show(
-                    "Revit API",
-                    "Loi khoi tao Add-in:\n" + ex.Message);
-
+                TaskDialog.Show("Lỗi OnStartup", ex.ToString());
                 return Result.Failed;
             }
+            return Result.Succeeded;
         }
 
-        public Result OnShutdown(UIControlledApplication application)
+        public Result OnShutdown(UIControlledApplication app)
         {
             return Result.Succeeded;
         }
