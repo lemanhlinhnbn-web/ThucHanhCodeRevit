@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <RevitAddIns>
 
   <AddIn Type="Command">
@@ -6,7 +6,7 @@
     <Text>Chọn cạnh [__BRANCH__]</Text>
     <Description>Nhánh: __BRANCH__</Description>
     <Assembly>ThucHanhCodeRevit.dll</Assembly>
-    <AddInId>GUID-1</AddInId>
+    <AddInId>09fb88fd-409e-432c-a52b-b0701c409774</AddInId>
     <FullClassName>ThucHanhCodeRevit._2011_1</FullClassName>
     <VendorId>LTBIM</VendorId>
     <VendorDescription>LTBIM</VendorDescription>
