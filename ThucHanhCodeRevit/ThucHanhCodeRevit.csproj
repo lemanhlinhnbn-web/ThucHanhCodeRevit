@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B89F9E30-4BAB-482D-868C-9BC2CA51B41E}</ProjectGuid>
+    <ProjectGuid>{7F2F50DE-5BBC-031C-85FC-1F4BBCD315DB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ThucHanhCodeRevit</RootNamespace>
