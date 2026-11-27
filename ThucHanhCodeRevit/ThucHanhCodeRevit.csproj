@@ -53,5 +53,9 @@
     <Compile Include="2711-1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="PNG\1795765855106_396888791114717474_8814649933816215539_f9fe70b63fed34fbfe4ff988365392b8.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
